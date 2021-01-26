@@ -1,0 +1,102 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "35430c4e18d98aeec31c021a523a536d",
+    "entities": [
+      {
+        "tableName": "WeatherForecast",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`Id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `CityName` TEXT NOT NULL, `EpochTime` INTEGER NOT NULL, `Pressure` INTEGER NOT NULL, `Humidity` INTEGER NOT NULL, `minTemperature` REAL NOT NULL, `maxTemperature` REAL NOT NULL, `description` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "Id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cityName",
+            "columnName": "CityName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "epochTime",
+            "columnName": "EpochTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pressure",
+            "columnName": "Pressure",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "humidity",
+            "columnName": "Humidity",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "temperature.minTemperature",
+            "columnName": "minTemperature",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "temperature.maxTemperature",
+            "columnName": "maxTemperature",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weatherDetail.description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "Id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "City",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`CityName` TEXT NOT NULL, `expiryTime` INTEGER NOT NULL, PRIMARY KEY(`CityName`))",
+        "fields": [
+          {
+            "fieldPath": "cityName",
+            "columnName": "CityName",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "expiryTime",
+            "columnName": "expiryTime",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "CityName"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '35430c4e18d98aeec31c021a523a536d')"
+    ]
+  }
+}

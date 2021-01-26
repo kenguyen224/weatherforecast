@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Weather Forecast</string>
+    <string name="search_hint">Ho Chi Minh city</string>
+    <string name="btn_search_txt">Get Weather</string>
+    <string name="txt_date">Date: </string>
+    <string name="txt_average_temperature">Average temperature: </string>
+    <string name="txt_pressure">Pressure: </string>
+    <string name="txt_humidity">Humidity: </string>
+    <string name="txt_description">Description: </string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="weather_forecast_text_view">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_6A6767</item>
+    </style>
+</resources>

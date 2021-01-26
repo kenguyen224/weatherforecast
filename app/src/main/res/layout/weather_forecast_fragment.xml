@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/default_padding"
+    android:paddingTop="@dimen/default_padding"
+    android:paddingEnd="@dimen/default_padding"
+    android:paddingBottom="@dimen/default_padding"
+    tools:context=".presentation.fragment.WeatherForecastFragment">
+
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="true"
+        android:hint="@string/search_hint"
+        android:inputType="textAutoComplete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        style="@style/TextAppearance.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/gray_D1CDCD"
+        android:text="@string/btn_search_txt"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_default"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtSearch" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvWeather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_padding"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSearch" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

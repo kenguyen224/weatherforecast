@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvDateDes"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        app:layout_constraintStart_toEndOf="@+id/tvDateDes"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="20/12/2021" />
+
+    <TextView
+        android:id="@+id/tvTempDes"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_average_temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateDes" />
+
+    <TextView
+        android:id="@+id/tvTemp"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        app:layout_constraintStart_toEndOf="@+id/tvTempDes"
+        app:layout_constraintTop_toBottomOf="@+id/tvDate"
+        tools:text="30 C" />
+
+    <TextView
+        android:id="@+id/tvPressureDes"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_pressure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTempDes" />
+
+    <TextView
+        android:id="@+id/tvPressure"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        app:layout_constraintStart_toEndOf="@+id/tvPressureDes"
+        app:layout_constraintTop_toBottomOf="@+id/tvTemp"
+        tools:text="2000" />
+
+    <TextView
+        android:id="@+id/tvHumidityDes"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_humidity"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPressureDes" />
+
+    <TextView
+        android:id="@+id/tvHumidity"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        app:layout_constraintStart_toEndOf="@+id/tvHumidityDes"
+        app:layout_constraintTop_toBottomOf="@+id/tvPressure"
+        tools:text="80%" />
+
+    <TextView
+        android:id="@+id/tvDescriptionDes"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHumidityDes" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        style="@style/weather_forecast_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        app:layout_constraintStart_toEndOf="@+id/tvDescriptionDes"
+        app:layout_constraintTop_toBottomOf="@+id/tvHumidity"
+        tools:text="light rain" />
+</androidx.constraintlayout.widget.ConstraintLayout>

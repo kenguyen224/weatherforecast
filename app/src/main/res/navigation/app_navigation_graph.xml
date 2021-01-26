@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation_graph"
+    app:startDestination="@id/weatherForecastFragment">
+    <fragment
+        android:id="@+id/weatherForecastFragment"
+        android:name="com.example.kenv.weatherforecast.presentation.fragment.WeatherForecastFragment"
+        android:label="weather_forecast_fragment"
+        tools:layout="@layout/weather_forecast_fragment" />
+</navigation>
