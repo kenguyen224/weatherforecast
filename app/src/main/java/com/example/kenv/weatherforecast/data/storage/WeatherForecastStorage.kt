@@ -24,7 +24,6 @@ class WeatherForecastStorage @Inject constructor(
             insertWeatherForecast(weatherForecast)
         }
 
-
     override suspend fun getWeather(cityName: String): CityWeatherForecast? =
         database.weatherForecastDao().getWeather(cityName)
 }

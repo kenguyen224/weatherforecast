@@ -18,9 +18,6 @@ interface WeatherForecastDao {
     @Insert
     suspend fun insertWeatherForecast(weatherForecast: List<WeatherForecastLocalEntity>)
 
-    @Query("SELECT * FROM WeatherForecast WHERE CityName LIKE :cityName")
-    suspend fun getWeatherForecast(cityName: String): List<WeatherForecastLocalEntity>
-
     @Query("DELETE  FROM WeatherForecast WHERE CityName LIKE :cityName")
     suspend fun deleteWeatherForecast(cityName: String)
 

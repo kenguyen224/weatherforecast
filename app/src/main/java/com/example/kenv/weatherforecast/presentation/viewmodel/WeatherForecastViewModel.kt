@@ -22,6 +22,7 @@ class WeatherForecastViewModel(
 
     fun getWeather(key: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            _weatherForecastLiveData.postValue(Resource.Processing())
             getWeatherUseCase(key)
                 .catch { error ->
                     _weatherForecastLiveData.postValue(Resource.Error(error))

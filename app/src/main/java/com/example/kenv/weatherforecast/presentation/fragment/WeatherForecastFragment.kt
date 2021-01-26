@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kenv.weatherforecast.databinding.WeatherForecastFragmentBinding
+import com.example.kenv.weatherforecast.extensions.show
 import com.example.kenv.weatherforecast.presentation.activity.MainActivity
 import com.example.kenv.weatherforecast.presentation.rcv.DividerItemDecoration
 import com.example.kenv.weatherforecast.presentation.rcv.adapter.WeatherForecastAdapter
@@ -79,16 +80,21 @@ class WeatherForecastFragment : Fragment() {
             { resource ->
                 when (resource) {
                     is Resource.Success -> {
+                        tvError.show(false)
+                        progressBar.show(false)
+                        rcvWeather.show(true)
                         weatherForecastAdapter.setData(resource.data)
                     }
                     is Resource.Error -> {
-                        Toast.makeText(
-                            this@WeatherForecastFragment.requireContext(),
-                            resource.exception.message,
-                            Toast.LENGTH_LONG
-                        ).show()
+                        rcvWeather.show(false)
+                        progressBar.show(false)
+                        tvError.show(true)
+                        tvError.text = resource.exception.message
                     }
                     is Resource.Processing -> {
+                        rcvWeather.show(false)
+                        tvError.show(false)
+                        progressBar.show(true)
                     }
                 }
             })
