@@ -9,6 +9,7 @@ import com.example.kenv.weatherforecast.data.storage.entity.WeatherForecast
 import com.example.kenv.weatherforecast.domain.entity.TemperatureEntity
 import com.example.kenv.weatherforecast.domain.entity.WeatherDescriptionEntity
 import com.example.kenv.weatherforecast.domain.entity.WeatherForecastEntity
+import com.example.kenv.weatherforecast.presentation.uimodel.ListWeatherForecastUiModel
 import com.example.kenv.weatherforecast.presentation.uimodel.WeatherForecastUIModel
 
 /**
@@ -62,12 +63,15 @@ fun WeatherDetail.toModel() = WeatherDetailModel(description = description)
 
 fun Temperature.toModel() = TemperatureModel(min = minTemperature, max = maxTemperature)
 
-fun List<WeatherForecastEntity>.toUiModel(): List<WeatherForecastUIModel> = map {
-    WeatherForecastUIModel(
-        dateTime = formatDateString(it.epochTime),
-        temperature = formatTemperatureCelsius(it.temperatureEntity.getAverageTemperature()),
-        pressure = it.pressure.toString(),
-        humidity = formatPercentage(it.humidity),
-        description = it.weatherDescriptions.first().description
+fun List<WeatherForecastEntity>.toUiModel(): ListWeatherForecastUiModel =
+    ListWeatherForecastUiModel(
+        map {
+            WeatherForecastUIModel(
+                dateTime = formatDateString(it.epochTime),
+                temperature = formatTemperatureCelsius(it.temperatureEntity.getAverageTemperature()),
+                pressure = it.pressure.toString(),
+                humidity = formatPercentage(it.humidity),
+                description = it.weatherDescriptions.first().description
+            )
+        }
     )
-}

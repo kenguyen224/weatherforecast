@@ -28,6 +28,6 @@ class WeatherForecastViewModelFactory @Inject constructor(
         require(modelClass == WeatherForecastViewModel::class.java) {
             "Invalid viewModel class: ${modelClass.simpleName}"
         }
-        return WeatherForecastViewModel(getWeatherUseCase) as T
+        return WeatherForecastViewModel(handle, getWeatherUseCase) as T
     }
 }

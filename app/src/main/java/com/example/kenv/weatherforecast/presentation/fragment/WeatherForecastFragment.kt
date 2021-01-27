@@ -83,7 +83,7 @@ class WeatherForecastFragment : Fragment() {
                         tvError.show(false)
                         progressBar.show(false)
                         rcvWeather.show(true)
-                        weatherForecastAdapter.setData(resource.data)
+                        weatherForecastAdapter.setData(resource.data.listWeatherForecast)
                     }
                     is Resource.Error -> {
                         rcvWeather.show(false)
@@ -94,7 +94,7 @@ class WeatherForecastFragment : Fragment() {
                     is Resource.Processing -> {
                         rcvWeather.show(false)
                         tvError.show(false)
-                        progressBar.show(true)
+                        progressBar.show(resource.loading)
                     }
                 }
             })

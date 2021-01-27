@@ -1,0 +1,14 @@
+package com.example.kenv.weatherforecast.presentation.uimodel
+
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+/**
+ * Created by KeNV on 27,January,2021
+ * VNG company,
+ * HCM, Viet Nam
+ */
+@Parcelize
+data class ListWeatherForecastUiModel(
+    val listWeatherForecast: List<WeatherForecastUIModel>
+) : Parcelable
