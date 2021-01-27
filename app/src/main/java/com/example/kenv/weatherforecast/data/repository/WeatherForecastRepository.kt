@@ -5,6 +5,7 @@ import com.example.kenv.weatherforecast.data.model.WeatherForecastResponse
 import com.example.kenv.weatherforecast.data.service.WeatherForecastService
 import com.example.kenv.weatherforecast.data.storage.IWeatherForecastStorage
 import com.example.kenv.weatherforecast.data.storage.entity.CityWeatherForecast
+import com.example.kenv.weatherforecast.domain.repository.IWeatherForecastRepository
 import com.example.kenv.weatherforecast.utils.Constant
 import com.example.kenv.weatherforecast.utils.Result
 import com.example.kenv.weatherforecast.utils.api.safeApiCalling

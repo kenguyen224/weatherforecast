@@ -1,4 +1,4 @@
-package com.example.kenv.weatherforecast.data.repository
+package com.example.kenv.weatherforecast.domain.repository
 
 import com.example.kenv.weatherforecast.data.model.WeatherForecastResponse
 import com.example.kenv.weatherforecast.utils.Result
