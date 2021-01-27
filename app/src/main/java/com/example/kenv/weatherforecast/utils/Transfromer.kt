@@ -5,7 +5,7 @@ import com.example.kenv.weatherforecast.data.model.WeatherDetailModel
 import com.example.kenv.weatherforecast.data.model.WeatherForecastModel
 import com.example.kenv.weatherforecast.data.storage.entity.Temperature
 import com.example.kenv.weatherforecast.data.storage.entity.WeatherDetail
-import com.example.kenv.weatherforecast.data.storage.entity.WeatherForecastLocalEntity
+import com.example.kenv.weatherforecast.data.storage.entity.WeatherForecast
 import com.example.kenv.weatherforecast.domain.entity.TemperatureEntity
 import com.example.kenv.weatherforecast.domain.entity.WeatherDescriptionEntity
 import com.example.kenv.weatherforecast.domain.entity.WeatherForecastEntity
@@ -32,9 +32,9 @@ fun WeatherDetailModel.toEntity() = WeatherDescriptionEntity(description)
 
 fun TemperatureModel.toEntity() = TemperatureEntity(min, max)
 
-fun List<WeatherForecastModel>.toDatabaseEntity(cityName: String): List<WeatherForecastLocalEntity> =
+fun List<WeatherForecastModel>.toDatabaseEntity(cityName: String): List<WeatherForecast> =
     map {
-        WeatherForecastLocalEntity(
+        WeatherForecast(
             cityName = cityName,
             epochTime = it.epochTime,
             temperature = it.temperatureModel.toDatabaseEntity(),
@@ -46,7 +46,7 @@ fun List<WeatherForecastModel>.toDatabaseEntity(cityName: String): List<WeatherF
 
 fun TemperatureModel.toDatabaseEntity() = Temperature(minTemperature = min, maxTemperature = max)
 
-fun List<WeatherForecastLocalEntity>.toWeatherForecastModel() = map {
+fun List<WeatherForecast>.toWeatherForecastModel() = map {
     WeatherForecastModel(
         epochTime = it.epochTime,
         temperatureModel = it.temperature.toModel(),

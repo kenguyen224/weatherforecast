@@ -2,7 +2,7 @@ package com.example.kenv.weatherforecast.data.storage
 
 import com.example.kenv.weatherforecast.data.storage.entity.CityEntity
 import com.example.kenv.weatherforecast.data.storage.entity.CityWeatherForecast
-import com.example.kenv.weatherforecast.data.storage.entity.WeatherForecastLocalEntity
+import com.example.kenv.weatherforecast.data.storage.entity.WeatherForecast
 import javax.inject.Inject
 
 /**
@@ -16,7 +16,7 @@ class WeatherForecastStorage @Inject constructor(
     override suspend fun save(
         cityName: String,
         expiryTime: Long,
-        weatherForecast: List<WeatherForecastLocalEntity>,
+        weatherForecast: List<WeatherForecast>,
     ) =
         with(database.weatherForecastDao()) {
             insertCityName(CityEntity(cityName, expiryTime))

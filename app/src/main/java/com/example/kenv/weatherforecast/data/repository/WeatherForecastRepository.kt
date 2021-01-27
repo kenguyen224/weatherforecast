@@ -7,6 +7,7 @@ import com.example.kenv.weatherforecast.data.storage.IWeatherForecastStorage
 import com.example.kenv.weatherforecast.data.storage.entity.CityWeatherForecast
 import com.example.kenv.weatherforecast.utils.Constant
 import com.example.kenv.weatherforecast.utils.Result
+import com.example.kenv.weatherforecast.utils.api.safeApiCalling
 import com.example.kenv.weatherforecast.utils.toDatabaseEntity
 import com.example.kenv.weatherforecast.utils.toWeatherForecastModel
 import kotlinx.coroutines.flow.Flow
@@ -28,47 +29,37 @@ class WeatherForecastRepository @Inject constructor(
         numberForecast: Int,
         appId: String,
         unit: String
-    ): Flow<Result<WeatherForecastResponse>> {
-        return flow {
-            try {
-                val local = getLocalEntity(cityName)
-                if (local == null || System.currentTimeMillis() >= local.city.expiryTime) {
-                    emit(Result.Success(fetch(cityName, numberForecast, appId, unit)))
-                } else {
-                    Log.d("WeatherForecast", "Get weather from local $cityName")
-                    emit(Result.Success(WeatherForecastResponse(local.weatherForecast.toWeatherForecastModel())))
+    ): Flow<Result<WeatherForecastResponse>> = flow {
+        val local = getLocalEntity(cityName)
+        if (local == null || System.currentTimeMillis() >= local.city.expiryTime) {
+            when (val response =
+                safeApiCalling { service.getWeather(cityName, numberForecast, appId, unit) }) {
+                is Result.Success -> {
+                    Log.d("WeatherForecast", "Fetch weather: $cityName")
+                    cacheResponse(cityName, response.data)
+                    emit(response)
                 }
-            } catch (throwable: Throwable) {
-                val localData = storage.getWeather(cityName)
-                val weatherForecast = localData?.weatherForecast
-                if (!weatherForecast.isNullOrEmpty()) {
-                    emit(Result.Success(WeatherForecastResponse(weatherForecast.toWeatherForecastModel())))
-                } else {
-                    emit(Result.Error(throwable))
+                is Result.Error -> {
+                    val localEntity = local?.weatherForecast
+                    if (!localEntity.isNullOrEmpty()) {
+                        emit(Result.Success(WeatherForecastResponse(localEntity.toWeatherForecastModel())))
+                    } else {
+                        emit(response)
+                    }
                 }
             }
+        } else {
+            Log.d("WeatherForecast", "Get weather from local $cityName")
+            emit(Result.Success(WeatherForecastResponse(local.weatherForecast.toWeatherForecastModel())))
         }
     }
 
-    private suspend fun fetch(
-        cityName: String,
-        numberForecast: Int,
-        appId: String,
-        unit: String
-    ): WeatherForecastResponse {
-        Log.d("WeatherForecast", "Fetch weather $cityName")
-        val response = service.getWeather(
-            cityName,
-            numberForecast,
-            appId,
-            unit
-        )
+    private suspend fun cacheResponse(cityName: String, response: WeatherForecastResponse) {
         storage.save(
             cityName,
             System.currentTimeMillis() + Constant.EXPIRY_TIME_MILLISECOND,
             response.weatherForecastList.toDatabaseEntity(cityName)
         )
-        return response
     }
 
     private suspend fun getLocalEntity(cityName: String): CityWeatherForecast? =

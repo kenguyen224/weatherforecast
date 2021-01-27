@@ -13,7 +13,7 @@ import androidx.room.PrimaryKey
 @Entity(
     tableName = "WeatherForecast"
 )
-data class WeatherForecastLocalEntity(
+data class WeatherForecast(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id") var id: Int = 0,
     @ColumnInfo(name = "CityName") val cityName: String,

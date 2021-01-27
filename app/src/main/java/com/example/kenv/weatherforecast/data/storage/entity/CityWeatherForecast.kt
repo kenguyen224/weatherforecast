@@ -14,5 +14,5 @@ data class CityWeatherForecast(
         parentColumn = "CityName",
         entityColumn = "CityName"
     )
-    val weatherForecast: List<WeatherForecastLocalEntity>
+    val weatherForecast: List<WeatherForecast>
 )
