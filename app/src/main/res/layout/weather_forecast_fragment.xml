@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingStart="@dimen/default_padding"
-    android:paddingTop="@dimen/default_padding"
+    android:paddingTop="@dimen/padding_small"
     android:paddingEnd="@dimen/default_padding"
     android:paddingBottom="@dimen/default_padding"
     tools:context=".presentation.fragment.WeatherForecastFragment">
@@ -14,11 +14,12 @@
     <EditText
         android:id="@+id/edtSearch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/search_box_height"
         android:autofillHints="true"
-        android:hint="@string/search_hint"
         android:inputType="textAutoComplete"
         app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/search_hint"
+        android:textSize="@dimen/text_size_medium"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
