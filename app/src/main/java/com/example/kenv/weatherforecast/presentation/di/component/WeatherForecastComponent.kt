@@ -2,7 +2,6 @@ package com.example.kenv.weatherforecast.presentation.di.component
 
 import android.app.Activity
 import com.example.kenv.weatherforecast.presentation.activity.MainActivity
-import com.example.kenv.weatherforecast.presentation.di.module.NetworkModule
 import com.example.kenv.weatherforecast.presentation.di.module.WeatherForecastModule
 import com.example.kenv.weatherforecast.presentation.di.scope.FeatureScope
 import com.example.kenv.weatherforecast.presentation.fragment.WeatherForecastFragment
@@ -16,7 +15,7 @@ import dagger.Component
  */
 @Component(
     dependencies = [AppComponent::class],
-    modules = [WeatherForecastModule::class, NetworkModule::class]
+    modules = [WeatherForecastModule::class]
 )
 @FeatureScope
 interface WeatherForecastComponent {

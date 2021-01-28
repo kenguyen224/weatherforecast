@@ -5,9 +5,11 @@ import android.content.Context
 import com.example.kenv.weatherforecast.AndroidApplication
 import com.example.kenv.weatherforecast.data.storage.AppDatabase
 import com.example.kenv.weatherforecast.presentation.di.module.AppModule
+import com.example.kenv.weatherforecast.presentation.di.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
+import retrofit2.Retrofit
 
 /**
  * Created by KeNV on 22,January,2021
@@ -15,7 +17,7 @@ import javax.inject.Singleton
  * HCM, Viet Nam
  */
 @Component(
-    modules = [AppModule::class]
+    modules = [AppModule::class, NetworkModule::class]
 )
 @Singleton
 interface AppComponent {
@@ -24,6 +26,7 @@ interface AppComponent {
 
     val context: Context
     val appDatabase: AppDatabase
+    val retrofit: Retrofit
 
     @Component.Builder
     interface Builder {

@@ -1,6 +1,5 @@
 package com.example.kenv.weatherforecast.data.repository
 
-import android.util.Log
 import com.example.kenv.weatherforecast.data.model.WeatherForecastResponse
 import com.example.kenv.weatherforecast.data.service.WeatherForecastService
 import com.example.kenv.weatherforecast.data.storage.IWeatherForecastStorage
@@ -11,9 +10,9 @@ import com.example.kenv.weatherforecast.utils.Result
 import com.example.kenv.weatherforecast.utils.api.safeApiCalling
 import com.example.kenv.weatherforecast.utils.toDatabaseEntity
 import com.example.kenv.weatherforecast.utils.toWeatherForecastModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
 
 /**
  * Created by KeNV on 24,January,2021
@@ -36,7 +35,6 @@ class WeatherForecastRepository @Inject constructor(
             when (val response =
                 safeApiCalling { service.getWeather(cityName, numberForecast, appId, unit) }) {
                 is Result.Success -> {
-                    Log.d("WeatherForecast", "Fetch weather: $cityName")
                     cacheResponse(cityName, response.data)
                     emit(response)
                 }
@@ -50,7 +48,6 @@ class WeatherForecastRepository @Inject constructor(
                 }
             }
         } else {
-            Log.d("WeatherForecast", "Get weather from local $cityName")
             emit(Result.Success(WeatherForecastResponse(local.weatherForecast.toWeatherForecastModel())))
         }
     }

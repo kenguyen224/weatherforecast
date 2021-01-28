@@ -1,9 +1,8 @@
 package com.example.kenv.weatherforecast.presentation.di.module
 
-import com.example.kenv.weatherforecast.data.service.WeatherForecastService
-import com.example.kenv.weatherforecast.presentation.di.scope.FeatureScope
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -19,7 +18,7 @@ class NetworkModule {
     }
 
     @Provides
-    @FeatureScope
+    @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(WEATHER_FORECAST_URL)
@@ -27,9 +26,5 @@ class NetworkModule {
             .build()
     }
 
-    @Provides
-    @FeatureScope
-    fun provideWeatherForecastService(retrofit: Retrofit): WeatherForecastService {
-        return retrofit.create(WeatherForecastService::class.java)
-    }
+
 }

@@ -18,8 +18,11 @@ import com.example.kenv.weatherforecast.presentation.viewmodel.WeatherForecastVi
 import com.example.kenv.weatherforecast.presentation.viewmodelfactory.WeatherForecastViewModelFactory
 import com.example.kenv.weatherforecast.utils.Constant
 import com.example.kenv.weatherforecast.utils.Resource
-import kotlinx.android.synthetic.main.weather_forecast_fragment.*
 import javax.inject.Inject
+import kotlinx.android.synthetic.main.weather_forecast_fragment.edtSearch
+import kotlinx.android.synthetic.main.weather_forecast_fragment.progressBar
+import kotlinx.android.synthetic.main.weather_forecast_fragment.rcvWeather
+import kotlinx.android.synthetic.main.weather_forecast_fragment.tvError
 
 class WeatherForecastFragment : Fragment() {
 
@@ -55,6 +58,7 @@ class WeatherForecastFragment : Fragment() {
         }
         viewBinding.btnSearch.setOnClickListener { onClickGetWeather() }
         bindViewModel()
+        viewBinding.edtSearch.requestFocus()
     }
 
     private fun onClickGetWeather() {
