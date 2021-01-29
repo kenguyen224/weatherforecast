@@ -31,7 +31,7 @@ This is  an android app, which can retrieve weather information based on their s
 
 ## Require steps in order to  run application
 
-- Clone project from repository: xxx
+- Clone project from repository: https://github.com/kenguyen224/weatherforecast.git
 - Open project by android studio (4.x.x).
 - Build and install app into android phone or virtual machine.
 
