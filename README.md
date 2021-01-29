@@ -8,9 +8,9 @@ This is  an android app, which can retrieve weather information based on their s
 
 ## Design pattern & practice
 
-- Seperate model using in different layer: database entity, data layer, domain layer, presentation layer
+- Seperate model using in different layer: database entity, api response, domain layer, presentation layer
 - Seperate component and provide dependency injection for each component
-- Architecture: Clean architecture
+- App Architecture: Clean architecture
 
 ## Folder structure
 
@@ -56,7 +56,7 @@ This is  an android app, which can retrieve weather information based on their s
 - [ ] SecureAndroidappfrom:
 	+ [ ] DecompileAPK
 	+ [ ] Rooteddevice
-	+ [ ] Data transmission via network
+	+ [x] Data transmission via network
 	+ [ ] Encryption for sensitive information
 - [ ] Accessibility for Disability Supports:
 	+ [ ] Talkback: Use a screen reader.
